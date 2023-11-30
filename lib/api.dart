@@ -18,10 +18,7 @@ class ApiClient {
   static Future<http.Response> get(String endpoint, {Map<String, String>? queryParameters}) async {
     try {
       final String apiUrl = "${Config.baseEndpoint}/$endpoint";
-      final response = await http.get(Uri.parse(apiUrl), headers: <String, String>{"Content-Type": "application/json; charset=UTF-8"},
-        // queryParameters: queryParameters,
-      );
-
+      final response = await http.get(Uri.parse(apiUrl), headers: <String, String>{"Content-Type": "application/json; charset=UTF-8"});
       return response;
     } catch (e) {
       return http.Response('Error: $e', 500);
