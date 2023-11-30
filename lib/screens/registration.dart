@@ -4,6 +4,7 @@ import "package:flutter_todo_auth/screens/home.dart";
 import "package:flutter_todo_auth/services/auth.service.dart";
 
 import "package:flutter_todo_auth/widgets/button.dart";
+import "package:flutter_todo_auth/widgets/input.dart";
 import "package:flutter_todo_auth/widgets/logo_animation.dart";
 
 import "package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart";
@@ -19,8 +20,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final Authentication auth = Authentication();
 
   bool loading = false;
-  late String email;
-  late String password;
+  String email = "";
+  String password = "";
 
   void setLoading(bool state) {
     setState(() {
@@ -41,31 +42,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 LogoAnimation(),
-                SizedBox(
-                  height: 48.0,
-                ),
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    email = value;
-                  },
-                  // decoration: inputDecoration.copyWith(hintText: "Enter your email"),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                TextField(
-                  textAlign: TextAlign.center,
-                  obscureText: true,
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  // decoration: inputDecoration.copyWith(hintText: "Enter your password"),
-                ),
-                SizedBox(
-                  height: 24.0,
-                ),
+                SizedBox(height: 48.0),
+                Input(field: email, label: "Enter your email"),
+                // TextField(
+                //   keyboardType: TextInputType.emailAddress,
+                //   textAlign: TextAlign.center,
+                //   onChanged: (value) {
+                //     email = value;
+                //   },
+                // ),
+                SizedBox(height: 8.0),
+                Input(field: password, label: "Enter your password"),
+                SizedBox(height: 24.0),
                 RoundedButton(
                     title: "Register",
                     color: Colors.blueAccent,
@@ -82,9 +70,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         setLoading(false);
                       }
                     })
-              ],
-            ),
-          )),
+              ]
+            )
+          ))
     );
   }
 }
