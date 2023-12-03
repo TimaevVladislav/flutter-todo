@@ -40,15 +40,11 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 LogoAnimation(),
-                SizedBox(
-                  height: 48.0,
-                ),
+                SizedBox(height: 48.0),
                 Input(field: email, label: "Enter your email", obscure: false),
                 SizedBox(height: 8.0),
                 Input(field: password, label: "Enter your password", obscure: true),
-                SizedBox(
-                  height: 24.0,
-                ),
+                SizedBox(height: 24.0),
                 RoundedButton(
                     title: "Log In",
                     color: Colors.lightBlueAccent,
@@ -57,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         setLoading(true);
                         final user = await auth.login(email, password);
 
-                        if (user != null) {
+                        if (user.token) {
                           setLoading(false);
                           Navigator.pushNamed(context, HomeScreen.route);
                         }
@@ -65,9 +61,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         setLoading(false);
                       }
                     }),
-              ],
-            ),
-          )),
+              ]
+            )
+          )
+      )
     );
   }
 }

@@ -55,7 +55,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         setLoading(true);
                         final candidate = await auth.register(email, password);
 
-                        if (candidate != null) {
+                        if (candidate.token) {
                           setLoading(false);
                           Navigator.pushNamed(context, HomeScreen.route);
                         }
