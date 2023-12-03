@@ -1,6 +1,9 @@
 import "package:flutter/material.dart";
+
 import "package:flutter_todo_auth/services/auth.service.dart";
-import "package:flutter_todo_auth/widgets/tasks/list.dart";
+import "package:flutter_todo_auth/widgets/logout_button.dart";
+import "package:flutter_todo_auth/widgets/tasks/actions.dart";
+import "package:flutter_todo_auth/widgets/tasks/items.dart";
 
 class HomeScreen extends StatefulWidget {
   static String route = "home";
@@ -36,26 +39,21 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         leading: null,
         actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.close),
-              onPressed: () {
-                auth.logout();
-                Navigator.pop(context);
-              }),
+          CloseLogoutButton(auth: auth),
         ],
         title: Text("Todo"),
         backgroundColor: Colors.lightBlueAccent,
       ),
+      floatingActionButton: AddTaskButton(),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-               TasksList(),
-
-          ],
-        ),
-      ),
+            TaskListItems()
+          ]
+        )
+      )
     );
   }
 }
