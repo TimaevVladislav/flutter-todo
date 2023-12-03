@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
 import "package:flutter_todo_auth/screens/home.dart";
+import "package:flutter_todo_auth/services/auth.service.dart";
 import "package:flutter_todo_auth/widgets/button.dart";
 import "package:flutter_todo_auth/widgets/input.dart";
 import "package:flutter_todo_auth/widgets/animations/logo.dart";
@@ -14,6 +15,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final Authentication auth = Authentication();
 
   bool loading = false;
   String email = "";
@@ -53,12 +55,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () async {
                       try {
                         setLoading(true);
-                        // final user = await auth.signInWithEmailAndPassword(email: email, password: password);
+                        final user = await auth.login(email, password);
 
-                        // if (user != null) {
-                        //   setLoading(false);
-                        //   Navigator.pushNamed(context, HomeScreen.route);
-                        // }
+                        if (user != null) {
+                          setLoading(false);
+                          Navigator.pushNamed(context, HomeScreen.route);
+                        }
                       } catch (e) {
                         setLoading(false);
                       }
