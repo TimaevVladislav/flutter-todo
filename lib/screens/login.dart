@@ -43,9 +43,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 48.0,
                 ),
-                Input(field: email, label: "Enter your email"),
+                Input(field: email, label: "Enter your email", obscure: false),
                 SizedBox(height: 8.0),
-                Input(field: password, label: "Enter your password"),
+                Input(field: password, label: "Enter your password", obscure: true),
                 SizedBox(
                   height: 24.0,
                 ),
