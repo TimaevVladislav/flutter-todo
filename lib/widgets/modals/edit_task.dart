@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_todo_auth/models/task.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_todo_auth/store/tasks.dart';
+import "package:flutter/material.dart";
+import "package:provider/provider.dart";
+import "package:flutter_todo_auth/store/tasks.dart";
 
 class EditTask extends StatefulWidget {
   final String title;
