@@ -2,7 +2,8 @@ import "package:flutter/material.dart";
 
 import "package:flutter_todo_auth/screens/home.dart";
 import "package:flutter_todo_auth/widgets/button.dart";
-import "package:flutter_todo_auth/widgets/logo_animation.dart";
+import "package:flutter_todo_auth/widgets/input.dart";
+import "package:flutter_todo_auth/widgets/animations/logo.dart";
 import "package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart";
 
 class LoginScreen extends StatefulWidget {
@@ -15,8 +16,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 
   bool loading = false;
-  late String email;
-  late String password;
+  String email = "";
+  String password = "";
 
   void setLoading(bool state) {
     setState(() {
@@ -40,25 +41,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 48.0,
                 ),
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    email = value;
-                  },
-                  // decoration: inputDecoration.copyWith(hintText: "Enter your email"),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                TextField(
-                  textAlign: TextAlign.center,
-                  obscureText: true,
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  // decoration: inputDecoration.copyWith(hintText: "Enter your password"),
-                ),
+                Input(field: email, label: "Enter your email"),
+                SizedBox(height: 8.0),
+                Input(field: password, label: "Enter your password"),
                 SizedBox(
                   height: 24.0,
                 ),

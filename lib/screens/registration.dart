@@ -5,7 +5,7 @@ import "package:flutter_todo_auth/services/auth.service.dart";
 
 import "package:flutter_todo_auth/widgets/button.dart";
 import "package:flutter_todo_auth/widgets/input.dart";
-import "package:flutter_todo_auth/widgets/logo_animation.dart";
+import "package:flutter_todo_auth/widgets/animations/logo.dart";
 
 import "package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart";
 
@@ -44,13 +44,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 LogoAnimation(),
                 SizedBox(height: 48.0),
                 Input(field: email, label: "Enter your email"),
-                // TextField(
-                //   keyboardType: TextInputType.emailAddress,
-                //   textAlign: TextAlign.center,
-                //   onChanged: (value) {
-                //     email = value;
-                //   },
-                // ),
                 SizedBox(height: 8.0),
                 Input(field: password, label: "Enter your password"),
                 SizedBox(height: 24.0),
@@ -60,9 +53,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     onPressed: () async {
                       try {
                         setLoading(true);
-                        final newUser = await auth.register(email, password);
+                        final candidate = await auth.register(email, password);
 
-                        if (newUser != null) {
+                        if (candidate != null) {
                           setLoading(false);
                           Navigator.pushNamed(context, HomeScreen.route);
                         }
