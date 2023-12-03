@@ -1,20 +1,24 @@
-import "package:flutter/material.dart";
-import "package:provider/provider.dart";
-import "package:flutter_todo_auth/store/tasks.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_todo_auth/models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_todo_auth/store/tasks.dart';
 
+class EditTask extends StatefulWidget {
+  final String title;
 
-class AddTask extends StatefulWidget {
+  EditTask({required this.title});
+
   @override
-  _AddTaskState createState() => _AddTaskState();
+  _EditTaskState createState() => _EditTaskState();
 }
 
-class _AddTaskState extends State<AddTask> {
-  late String newTaskTitle;
+class _EditTaskState extends State<EditTask> {
+  late TextEditingController _textEditingController;
 
   @override
   void initState() {
     super.initState();
-    newTaskTitle = "";
+    _textEditingController = TextEditingController(text: widget.title);
   }
 
   @override
@@ -34,7 +38,7 @@ class _AddTaskState extends State<AddTask> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Text(
-              "Add Task",
+              "Edit Task",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30.0,
@@ -44,33 +48,36 @@ class _AddTaskState extends State<AddTask> {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
+              controller: _textEditingController,
               decoration: InputDecoration(border: InputBorder.none),
-              onChanged: (value) {
-                setState(() {
-                  newTaskTitle = value;
-                });
-              }
             ),
-            AddTaskButton(title: newTaskTitle),
-          ]
-        )
-      )
+            EditTaskButton(
+              oldTitle: widget.title,
+              newTitleController: _textEditingController,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
 
-class AddTaskButton extends StatelessWidget {
-  const AddTaskButton({Key? key, required this.title}) : super(key: key);
-  final String title;
+class EditTaskButton extends StatelessWidget {
+  final String oldTitle;
+  final TextEditingController newTitleController;
+
+  EditTaskButton({required this.oldTitle, required this.newTitleController});
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      child: Text("Add", style: TextStyle(color: Colors.white)),
+      child: Text("Save", style: TextStyle(color: Colors.white)),
       backgroundColor: Colors.lightBlueAccent,
       onPressed: () {
-        if (title != "") {
-          Provider.of<Tasks>(context, listen: false).addTask(title);
+        String newTitle = newTitleController.text;
+
+        if (newTitle != "") {
+          Provider.of<Tasks>(context, listen: false).editTask(oldTitle, newTitle);
           Navigator.pop(context);
         }
       }

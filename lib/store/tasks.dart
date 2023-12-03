@@ -3,11 +3,7 @@ import "package:flutter_todo_auth/models/task.dart";
 import "dart:collection";
 
 class Tasks extends ChangeNotifier {
-  List<Task> tasks = [
-    Task(name: 'Buy milk'),
-    Task(name: 'Buy eggs'),
-    Task(name: 'Buy bread'),
-  ];
+  List<Task> tasks = [];
 
   UnmodifiableListView<Task> get _tasks {
     return UnmodifiableListView(tasks);
@@ -26,6 +22,14 @@ class Tasks extends ChangeNotifier {
   void updateTask(Task task) {
     task.toggleDone();
     notifyListeners();
+  }
+
+  void editTask(String oldTitle, String newTitle) {
+    final index = tasks.indexWhere((task) => task.name == oldTitle);
+    if (index != -1) {
+      tasks[index].name = newTitle;
+      notifyListeners();
+    }
   }
 
   void deleteTask(Task task) {
