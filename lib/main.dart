@@ -28,8 +28,7 @@ class Todo extends StatelessWidget {
         WelcomeScreen.route: (context) => WelcomeScreen(),
         RegistrationScreen.route: (context) => RegistrationScreen(),
         LoginScreen.route: (context) => LoginScreen(),
-        HomeScreen.route: (context) => HomeScreen(),
-
+        HomeScreen.route: (context) => HomeScreen()
       }
     );
   }
