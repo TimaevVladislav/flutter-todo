@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "package:flutter_todo_auth/services/auth.service.dart";
+import "package:flutter_todo_auth/store/auth.dart";
 import "package:flutter_todo_auth/widgets/logout_button.dart";
 import "package:flutter_todo_auth/widgets/tasks/actions.dart";
 import "package:flutter_todo_auth/widgets/tasks/items.dart";
@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
           CloseLogoutButton(auth: auth),
         ],
         title: Text("Todo"),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.blueAccent,
       ),
       floatingActionButton: AddTaskButton(),
       body: SafeArea(

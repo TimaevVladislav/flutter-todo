@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "package:flutter_todo_auth/screens/login.dart";
 import "package:flutter_todo_auth/screens/registration.dart";
 
-import "package:flutter_todo_auth/widgets/button.dart";
+import "package:flutter_todo_auth/widgets/button_auth.dart";
 import "package:flutter_todo_auth/widgets/animations/logo.dart";
 import "package:flutter_todo_auth/widgets/animations/title.dart";
 
