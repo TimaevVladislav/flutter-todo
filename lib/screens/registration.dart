@@ -54,6 +54,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     await prefs.setString("access_token", token);
 
     message = "";
+    email = "";
+    password = "";
     setLoading(false);
   }
 

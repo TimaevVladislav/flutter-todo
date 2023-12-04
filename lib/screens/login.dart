@@ -23,6 +23,11 @@ class _LoginScreenState extends State<LoginScreen> {
   String password = "";
   late String message = "";
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void setLoading(bool state) {
     setState(() {
       loading = state;
@@ -52,6 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
     await prefs.setString("access_token", token);
 
     message = "";
+    email = "";
+    password = "";
     setLoading(false);
   }
 
