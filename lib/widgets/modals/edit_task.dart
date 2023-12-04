@@ -80,7 +80,7 @@ class EditTaskButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       child: Text("Save", style: TextStyle(color: Colors.white)),
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Colors.blueAccent,
       onPressed: () {
         editTaskHandler(context);
       }
