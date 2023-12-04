@@ -11,7 +11,7 @@ class ApiClient {
       final response = await http.post(Uri.parse(apiUrl), headers: <String, String>{"Content-Type": "application/json; charset=UTF-8"}, body: jsonEncode(body));
       return response;
     } catch (e) {
-      return http.Response('Error: $e', 500);
+      return http.Response("Error: $e", 500);
     }
   }
 
@@ -21,7 +21,7 @@ class ApiClient {
       final response = await http.get(Uri.parse(apiUrl), headers: <String, String>{"Content-Type": "application/json; charset=UTF-8"});
       return response;
     } catch (e) {
-      return http.Response('Error: $e', 500);
+      return http.Response("Error: $e", 500);
     }
   }
 }
