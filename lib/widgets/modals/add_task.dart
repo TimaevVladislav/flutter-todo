@@ -38,7 +38,7 @@ class _AddTaskState extends State<AddTask> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30.0,
-                color: Colors.lightBlueAccent,
+                color: Colors.blueAccent,
               ),
             ),
             TextField(
@@ -67,7 +67,7 @@ class AddTaskButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       child: Text("Add", style: TextStyle(color: Colors.white)),
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Colors.blueAccent,
       onPressed: () {
         if (title != "") {
           Provider.of<Tasks>(context, listen: false).addTask(title);

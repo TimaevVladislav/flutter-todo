@@ -5,7 +5,7 @@ class AddTaskButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.blueAccent,
         child: Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(

@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:flutter_todo_auth/services/auth.service.dart";
+import "package:flutter_todo_auth/store/auth.dart";
 
 class CloseLogoutButton extends StatelessWidget {
   const CloseLogoutButton({super.key, required this.auth});
