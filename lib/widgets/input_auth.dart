@@ -2,10 +2,10 @@ import "package:flutter/material.dart";
 import "package:flutter_todo_auth/styles/input.module.dart";
 
 class Input extends StatelessWidget {
-  Input({required this.field, required this.label, required this.obscure});
-  late String field;
+  Input({required this.onChanged, required this.label, required this.obscure});
   late bool obscure;
   final String label;
+  final void Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,7 @@ class Input extends StatelessWidget {
       obscureText: obscure,
       textAlign: TextAlign.center,
       decoration: inputDecoration.copyWith(hintText: label),
-      onChanged: (value) {
-         field = value;
-      },
+      onChanged: onChanged
     );
   }
 }

@@ -41,7 +41,7 @@ class _EditTaskState extends State<EditTask> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30.0,
-                color: Colors.lightBlueAccent,
+                color: Colors.blueAccent,
               ),
             ),
             TextField(
@@ -67,18 +67,22 @@ class EditTaskButton extends StatelessWidget {
 
   EditTaskButton({required this.oldTitle, required this.newTitleController});
 
+  void editTaskHandler(context) {
+    String newTitle = newTitleController.text;
+
+    if (newTitle != "") {
+      Provider.of<Tasks>(context, listen: false).editTask(oldTitle, newTitle);
+      Navigator.pop(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       child: Text("Save", style: TextStyle(color: Colors.white)),
       backgroundColor: Colors.lightBlueAccent,
       onPressed: () {
-        String newTitle = newTitleController.text;
-
-        if (newTitle != "") {
-          Provider.of<Tasks>(context, listen: false).editTask(oldTitle, newTitle);
-          Navigator.pop(context);
-        }
+        editTaskHandler(context);
       }
     );
   }
