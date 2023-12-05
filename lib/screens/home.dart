@@ -16,7 +16,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final Authentication auth = Authentication();
   final TextEditingController messageController = TextEditingController();
 
-  // late User logged;
   late String message;
   bool isOwnMessage = false;
 
@@ -27,16 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void getCurrentUser() async {
-    // final user = await auth.currentUser;
-    // if (user != null) {
-    //   logged = user;
-    // }
+    await auth.currentUser();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         leading: null,
         actions: <Widget>[
           CloseLogoutButton(auth: auth),

@@ -4,6 +4,7 @@ import "package:flutter_todo_auth/screens/welcome.dart";
 import "package:flutter_todo_auth/screens/home.dart";
 import "package:flutter_todo_auth/screens/login.dart";
 import "package:flutter_todo_auth/screens/registration.dart";
+import "package:flutter_todo_auth/store/auth.dart";
 import "package:flutter_todo_auth/store/tasks.dart";
 import "package:provider/provider.dart";
 
@@ -12,7 +13,8 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => Tasks()), // Replace with your actual data model class
+        ChangeNotifierProvider(create: (context) => Tasks()),
+        ChangeNotifierProvider(create: (context) => Authentication())
       ],
       child: Todo()
     )

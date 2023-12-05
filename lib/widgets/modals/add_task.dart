@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_todo_auth/store/auth.dart";
 import "package:provider/provider.dart";
 import "package:flutter_todo_auth/store/tasks.dart";
 
@@ -63,16 +64,22 @@ class AddTaskButton extends StatelessWidget {
   const AddTaskButton({Key? key, required this.title}) : super(key: key);
   final String title;
 
+  void createTask(context) {
+    final user = Authentication.logged;
+
+    if (title != "") {
+      Provider.of<Tasks>(context, listen: false).createTask(user["id"], title);
+      Navigator.pop(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       child: Text("Add", style: TextStyle(color: Colors.white)),
       backgroundColor: Colors.blueAccent,
       onPressed: () {
-        if (title != "") {
-          Provider.of<Tasks>(context, listen: false).addTask(title);
-          Navigator.pop(context);
-        }
+        createTask(context);
       }
     );
   }
